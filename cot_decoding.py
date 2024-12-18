@@ -127,7 +127,7 @@ def main():
     
     decoder = CoTDecoder(model_name)
     
-    # print("\n\nExample 1 CoT-Decoding Results:")
+    # print("\n\nExample CoT-Decoding Results:")
     # # Example prompt from GSM8K dataset taken from the paper
     # prompt = """Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them?"""
     
@@ -135,13 +135,13 @@ def main():
     # decoder.decode_and_print_results(prompt, top_k=10, max_length=200)
 
     # Other example prompts from the paper
-    # print("\n\nExample 2 CoT-Decoding Results:")
+    # print("\n\nExample CoT-Decoding Results:")
     # prompt = """I have 3 apples, my dad has 2 more apples than me, how many apples do we have in total?"""
     # decoder.decode_and_print_results(prompt, top_k=10, max_length=75)
 
-    print("\n\nExample 3 CoT-Decoding Results:")
+    print("\n\nExample CoT-Decoding Results:")
     prompt = """Was Nicolas Cage born in an even or odd year?"""
-    decoder.decode_and_print_results(prompt, top_k=10, max_length=75)
+    decoder.decode_and_print_results(prompt, top_k=10, max_length=150)
 
 if __name__ == "__main__":
     main()

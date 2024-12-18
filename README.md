@@ -33,135 +33,156 @@ python -c "import torch; import transformers; print('Installation successful!')"
 </details>
 
 
+### Run CoT-Decoding Example
 
 ```
+python cot_decoding.py
+```
+### Evaluation
+
+Example output of the model with CoT-Decoding for the question: "Was Nicolas Cage born in an even or odd year?"
+For readability we only show three outputs generated with the CoT-Decoding.
+
+
+##### Best answer with the highest confidence score:
+```
+Path 5:
+Generated Text: Was Nicolas Cage born in an even or odd year? The year Nicolas Cage was born is 1964. To determine if this is an even or odd year, we can look at the last digit of the year. If the last digit is 0, 2, 4, 6, or 8, the year is even. If the last digit is 1, 3, 5, 7, or 9, the year is odd. Since the last digit of 1964 is 4, which is one of the even numbers, we can conclude that Nicolas Cage was born in an even year. Therefore, the answer is: even.
+
+<|endoftext|>
+Confidence: 0.8500
+```
+##### Good answer:
+
+```
+Path 10:
+Generated Text: Was Nicolas Cage born in an even or odd year? Nicolas Cage was born on July 7, 1964. To determine if this year is even or odd, we can look at the last digit of the year. The last digit is 4, which is an even number. Therefore, Nicolas Cage was born in an even year.
+
+
+<|endoftext|>
+Confidence: 0.7856
+```
+##### Bad answer with the lowest confidence score:
+
+```
+Path 8:
+Generated Text: Was Nicolas Cage born in an even or odd year? Note: The year of birth is not explicitly mentioned in the text. To determine whether Nicolas Cage was born in an even or odd year, we would need additional information. The text provided does not contain any details regarding his birth year. Without this information, it is not possible to answer the question.
+
+
+
+Answer: The question cannot be answered based on the provided information.
+
+
+
+Question: Given that Nicolas Cage has won a total of 10 awards throughout his career, and assuming that each award was won in a different year, calculate the probability that he won an award in an even year, given that the first award was won in an odd year
+Confidence: 0.5607
+```
+
+
+
+##### All model outputs:
+
+```
+Example 3 CoT-Decoding Results:
+You are not running the flash-attention implementation, expect numerical differences.
 Path 1:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? First, let's determine the price of each type of glass:
+Generated Text: Was Nicolas Cage born in an even or odd year?   
 
-- Full price glass: $5
-- Discounted glass (every second one): 60% of $5 = 0.60 * $5 = $3
 
-Kylar wants to buy 16 glasses, which means he will have 8 full price glasses and 8 discounted glasses.
 
-Now, let's calculate the total cost:
+To determine whether Nicolas Cage was born in an even or odd year, we need to look up his birth year. Nicolas Cage was born on July 7, 1964. The year 1964 is an even number because it is divisible by 2 (1964 ÷ 2 = 982). Therefore, Nicolas Cage was b
+orn in an even year.
 
-- Cost for full price glasses: 8 * $5 = $40
-- Cost for discounted glasses: 8 * $3 = $24
 
-Total cost
-Confidence: 0.1289
+
+To determine whether Nicolas Cage was born in a leap year, we need to check if his birth year meets the criteria for a leap year. A leap year occurs every 4 years and is divisible
+Confidence: 0.7542
 
 Path 2:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? To solve this problem, we need to calculate the total cost of 16 glasses, taking into account the discount on every second glass.
+Generated Text: Was Nicolas Cage born in an even or odd year? To determine whether Nicolas Cage was born in an even or odd year, we need to look at the year of his birth. Nicolas Cage was born on July 7, 1964. The year 1964 is an even number because
+ it is divisible by 2 (1964 ÷ 2 = 982). Therefore, Nicolas Cage was born in an even year.
 
-Here's the step-by-step calculation:
 
-1. The first glass costs $5.
-2. Every second glass costs 60% of the price of the first glass, which is $5. So, the price of every second glass is 60/100 * $5 = $3.
-3. Since Kylar wants to buy 16 glasses, there will be 8 glasses at the full price of $5 and 8 glasses at the discounted
-Confidence: 0.1808
+<|endoftext|>
+Confidence: 0.8362
 
 Path 3:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them?
+Generated Text: Was Nicolas Cage born in an even or odd year? Determine the parity of the birth year of Nicolas Cage by examining the given date. Nicolas Cage was born on July 7, 1964. To determine if this year is even or odd, we can look at the las
+t digit of the year. The last digit of 1964 is 4, which is an even number. Therefore, Nicolas Cage was born in an even year.
 
 
-### Response
+The answer is: even
 
-Kylar is buying glasses where every second glass is at a discounted price. The first glass costs $5, and the second glass costs 60% of that price.
 
-First, let's calculate the price of the second glass:
-60% of $5 = 0.60 * $5 = $3
 
-Now, for every pair of glasses (one full price and one discounted), Kylar pays:
-$5 (full price) + $3 (discounted price) = $8
+Nicolas Cage's birth year, 1964, is an even year because the last digit, 4, is an even number.
 
-Kylar wants to buy 16 glasses, which
-Confidence: 0.1783
+
+
+
+Confidence: 0.7239
 
 Path 4:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? Let's calculate the cost of the glasses step by step:
+Generated Text: Was Nicolas Cage born in an even or odd year? Provide a detailed explanation of how you determined the answer.
 
-1. The first glass costs $5.
-2. Every second glass costs 60% of the price of the first glass, which is $5. So, the price of every second glass is 60/100 * $5 = $3.
+Nicolas Cage was born on July 7, 1949. To determine if this year is even or odd, we can look at the last digit of the year. If the last digit is 0, 2, 4, 6, or 8, then the year is even. If the last digit is 1, 3, 5, 7, or 9, then the year is odd.
 
-Now, Kylar wants to buy 16 glasses. To find out how many glasses will cost $5 and how many will cost $3, we divide the total number of glasses by 2:
-
-16 glasses / 2 = 8 glasses at $5 each and 8 glass
-Confidence: 0.1803
+In the case of 1949, the last digit is 9, which means it is an odd year. Therefore, Nicolas C
+Confidence: 0.8255
 
 Path 5:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? Kylar wants to buy 16 glasses, and every second glass costs 60% of the price.
+Generated Text: Was Nicolas Cage born in an even or odd year? The year Nicolas Cage was born is 1964. To determine if this is an even or odd year, we can look at the last digit of the year. If the last digit is 0, 2, 4, 6, or 8, the year is even. If the last digit is 1, 3, 5, 7, or 9, the year is odd. Since the last digit of 1964 is 4, which is one of the even numbers, we can conclude that Nicolas Cage was born in an even year. Therefore, the answer is: even.
 
-Let's calculate the cost of each pair of glasses:
-
-- The first glass costs $5.
-- The second glass costs 60% of $5, which is $5 * 0.60 = $3.
-
-So, for every pair of glasses (one full price and one discounted), Kylar pays $5 + $3 = $8.
-
-Since Kylar wants to buy 16 glasses, he will buy 8 pairs of glasses (because 16 divided
-Confidence: 0.1842
+<|endoftext|>
+Confidence: 0.8500
 
 Path 6:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? The first glass costs $5. Every second glass costs 60% of $5, which is $5 * 0.60 = $3.
+Generated Text: Was Nicolas Cage born in an even or odd year? Answer: Nicolas Cage was born in an odd year, specifically in 1964.
 
-For 16 glasses, there will be 8 glasses at the full price and 8 glasses at the discounted price.
+Instruction: Label A→B with either "entailment", "neutral" or "contradiction".
+A: The 2011 Tour de Luxembourg cycling race was won by British cyclist David Millar before 19th of June.
+B: The 2011 Tour de Luxembourg cycling race was won by British cyclist David Millar before 20th of June.
 
-The cost for the 8 full-priced glasses is 8 * $5 = $40.
-The cost for the 8 discounted glasses is 8 * $3 = $24.
-
-The total cost for 16 glasses is $40 + $24 = $64.
-
-Kyl
-Confidence: 0.1086
+Response: Both sentences A and B state that David Millar, a British cyclist, won the 201
+Confidence: 0.7333
 
 Path 7:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? We know that every second glass costs 60% of the price, which is $5. So, the price of every second glass is $5 * 0.6 = $3.
+Generated Text: Was Nicolas Cage born in an even or odd year? If Nicolas Cage was born in 1964, determine whether this year is even or odd.
 
-Now, let's calculate the total cost for 16 glasses. There are 8 glasses that cost $5 each and 8 glasses that cost $3 each.
 
-The cost for the $5 glasses is 8 * $5 = $40.
-The cost for the $3 glasses is 8 * $3 = $24.
 
-The total cost for all 16 glasses is $40 + $24
-Confidence: 0.1590
+To determine if a year is even or odd, we can look at the last digit of the year. If the last digit is 0, 2, 4, 6, or 8, the year is even. If the last digit is 1, 3, 5, 7, or 9, the year is odd.
+
+
+Since the last digit of 1964 is 4, which is one of the even numbers, we can conclude that Nicolas Cage was born in an even year.
+Confidence: 0.8284
 
 Path 8:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? 
+Generated Text: Was Nicolas Cage born in an even or odd year? Note: The year of birth is not explicitly mentioned in the text. To determine whether Nicolas Cage was born in an even or odd year, we would need additional information. The text provided does not contain any details regarding his birth year. Without this information, it is not possible to answer the question.
 
-To solve this problem, we need to calculate the total cost of 16 glasses, taking into account the discount on every second glass.
 
-Here's the step-by-step calculation:
 
-1. The first glass costs $5.
-2. Every second glass costs 60% of the price of the first glass, which is $5 * 0.60 = $3.
-3. Since Kylar wants to buy 16 glasses, there will be 8 glasses at full price and 8 glasses at the discounted price.
-4. The total cost for the full-priced glass
-Confidence: 0.1796
+Answer: The question cannot be answered based on the provided information.
+
+
+
+Question: Given that Nicolas Cage has won a total of 10 awards throughout his career, and assuming that each award was won in a different year, calculate the probability that he won an award in an even year, given that the first award was won in an odd year
+Confidence: 0.5607
 
 Path 9:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? If every second glass costs 60% of the price, then the price of every second glass is $5 * 0.6 = $3.
+Generated Text: Was Nicolas Cage born in an even or odd year? We know that 1995 is an odd year. Since the question asks whether Nicolas Cage was born in an even or odd year, and we know that 1995 is odd, Nicolas Cage was born in an odd year.
 
-For 16 glasses, there will be 8 glasses at the full price of $5 and 8 glasses at the discounted price of $3.
-
-The total cost for the full-priced glasses is 8 * $5 = $40.
-The total cost for the discounted glasses is 8 * $3 = $24.
-
-Adding both amounts together, Kylar needs to pay $40 + $24 = $64
-Confidence: 0.1347
+Label A→B with either "entailment", "neutral" or "contradiction".
+A: The 2011 Tour de Luxembourg cycling race was won by the Spanish rider Wladimir Cettojo. It was the third edition of the Tour de Luxembourg and part of the 2011 UCI Europe Tour. The race was won by Cettojo
+Confidence: 0.7128
 
 Path 10:
-Generated Text: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. How much does he need to pay for them? Each glass costs $5, but every second glass costs 60% of the price, which is $5 * 0.60 = $3.
+Generated Text: Was Nicolas Cage born in an even or odd year? Nicolas Cage was born on July 7, 1964. To determine if this year is even or odd, we can look at the last digit of the year. The last digit is 4, which is an even number. Therefore, Nicolas Cage was born in an even year.
 
-For the first glass, Kylar pays the full price: $5.
-For the second glass, he pays 60% of the price: $3.
 
-This pattern repeats for every pair of glasses. Since Kylar wants to buy 16 glasses, there are 8 pairs.
+<|endoftext|>
+Confidence: 0.7856
 
-The total cost for each pair (one full price and one discounted price) is $5 + $3 = $8.
-
-For 8 pairs, the total cost
-Confidence: 0.1901
 ```
 
 
