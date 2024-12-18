@@ -94,7 +94,7 @@ class CoTDecoder:
             # Store result
             generation_results.append((
                 current_sequence[0].tolist(), 
-                1 - avg_uncertainty  # Convert uncertainty to confidence
+                avg_uncertainty # or 1-avg_uncertainty?
             ))
         
         return generation_results
