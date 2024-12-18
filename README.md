@@ -1,5 +1,5 @@
 # CoT-Decoding
-PyTorch implementation of the decoding strategy presented in [Chain-of-Thought Reasoning without Prompting](https://arxiv.org/pdf/2402.10200):
+Minimal PyTorch implementation of the Chain-of-Thought decoding strategy presented in [Chain-of-Thought Reasoning without Prompting](https://arxiv.org/pdf/2402.10200):
 
 Conventional reasoning with Large Language Models often relies on specific prompting techniques like few-shot learning. The authors of the paper explore an innovative decoding strategy that uncovers inherent reasoning paths by exploring top-k alternative token sequences. By altering the traditional greedy decoding process, the method reveals that Chain of Thought reasoning can emerge naturally within model-generated sequences, without explicit human-crafted prompts. The approach challenges existing assumptions about reasoning in LLMs by demonstrating that complex reasoning paths are intrinsically present in model outputs.
 
